@@ -18,21 +18,26 @@ namespace Wordsearch_Solver
 
             foreach (string puzzle in puzzles)
             {
-                //Simple solution
+                //Setup
                 stopwatch.Start();
                 Wordsearch.setPuzzle(puzzle);
                 stopwatch.Stop();
                 string loadTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
 
+                //Simple solution
                 stopwatch.Start();
                 Wordsearch.SimpleSolve();
                 stopwatch.Stop();
                 string solveTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
-
                 Wordsearch.WriteResuts(loadTime, solveTime);
 
                 //Advanced solution
+                stopwatch.Start();
                 Wordsearch.AdvancedSolve();
+                stopwatch.Stop();
+                solveTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
+                Wordsearch.WriteResuts(loadTime,solveTime);
+
             }
         }
     }

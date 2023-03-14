@@ -278,73 +278,96 @@ namespace Wordsearch_Solver
 
             for(int i = 0; i < dictionarySize; i++)
             {
-                string word = simpleDictionary[i];
-                int wordSize = word.Length;
+                addWord(i);
+            }
+        }
 
-                bool match = false;
-                foreach (Cell root in advancedDictionary)
+        static void addWord(int i)
+        {
+            string word = simpleDictionary[i];
+            //int wordSize = word.Length;
+
+            bool match = false;
+            foreach (Cell root in advancedDictionary)
+            {
+                if (root.GetLetter() == word[0])
                 {
-                    if (root.GetLetter() == word[0])
+                    addToRoot(ref match, root, word);
+                }
+            } 
+            if (match == false)
+            {
+                addNewRoot(word);
+            }
+        }
+
+        private static void addNewRoot(string word)
+        {
+            int wordSize = word.Length;
+            Cell root = new Cell(word[0]);
+            Cell current = root;
+
+            for (int j = 1; j < wordSize - 1; j++)
+            {
+                current = AddNextCell(word, current, j);
+            }
+            AddLastCell(word, current);
+            advancedDictionary.Add(root);
+        }
+
+        private static void addToRoot(ref bool match, Cell root, string word)
+        {
+            int wordSize = word.Length;
+            match = true;
+
+            Cell current = root;
+            int depth = 0;
+
+            while (match)
+            {
+                match = false;
+                foreach (Cell next in current.nextLetters)
+                {
+                    if (next.GetLetter() == word[depth + 1])
                     {
+                        current = next;
                         match = true;
+                        depth++;
 
-                        Cell current = root;
-                        int depth = 0;
+                        if (depth + 1 >= wordSize)
+                            depth--;
 
-                        while (match)
+
+                        if (depth == wordSize)
                         {
-                            match = false;
-                            foreach (Cell next in current.nextLetters)
-                            {
-                                if (next.GetLetter() == word[depth + 1])
-                                {
-                                    current = next;
-                                    match = true;
-                                    depth++;
-
-                                    if (depth + 1 >= wordSize)
-                                        depth--;
-                                    
-
-                                    if (depth == wordSize)
-                                    {
-                                        next.SetWord(word);
-                                        break;
-                                    }
-                                    break;
-                                }
-                            }
+                            next.SetWord(word);
+                            break;
                         }
-                        for (int j = depth + 1; j < wordSize - 1; j++)
-                        {
-                            Cell newCell = new Cell(word[j]);
-                            current.AddCell(newCell);
-                            current = newCell;
-                        }
-                        Cell lastCell = new Cell(word[wordSize - 1], word);
-                        current.AddCell(lastCell);
-                        match = true;
                         break;
                     }
                 }
-                if (match == false)
-                {
-                    Cell root = new Cell(word[0]);
-                    Cell current = root;
-
-                    for (int j = 1; j < wordSize - 1; j++)
-                    {
-                        Cell newCell = new Cell(word[j]);
-                        current.AddCell(newCell);
-                        current = newCell;
-                    }
-
-                    Cell lastCell = new Cell(word[wordSize - 1],word);
-                    current.AddCell(lastCell);
-                    advancedDictionary.Add(root);
-                    //What is root?
-                }
             }
+            for (int j = depth + 1; j < wordSize - 1; j++)
+            {
+                current = AddNextCell(word, current, j);
+            }
+            AddLastCell(word, current);
+            match = true;
+            //break;  return?
+        }
+
+        private static void AddLastCell(string word,Cell current)
+        {
+            int wordSize = word.Length;
+            Cell lastCell = new Cell(word[wordSize - 1], word);
+            current.AddCell(lastCell);
+        }
+
+        private static Cell AddNextCell(string word, Cell current, int depth)
+        {
+            Cell newCell = new Cell(word[depth]);
+            current.AddCell(newCell);
+            return newCell;
         }
     }
 }
