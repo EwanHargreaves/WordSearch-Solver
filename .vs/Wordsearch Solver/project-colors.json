@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7bb2af3f-9be9-4473-9264-683b1dd80095": {
+      "ProjectGuid": "7bb2af3f-9be9-4473-9264-683b1dd80095",
+      "DisplayName": "Wordsearch Solver",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
