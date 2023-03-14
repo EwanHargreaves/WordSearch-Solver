@@ -11,7 +11,7 @@ namespace Wordsearch_Solver
         private char letter;
         private string word;
 
-        private List<Cell> nextLetters = new List<Cell>();
+        public List<Cell> nextLetters = new List<Cell>();
 
         Cell (char pLetter) : this (pLetter, "")
         {

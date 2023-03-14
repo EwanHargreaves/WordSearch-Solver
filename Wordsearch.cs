@@ -78,8 +78,19 @@ namespace Wordsearch_Solver
             Simple();
         }
 
+        
+        public static void AdvancedSolve()
+        {
+            loadAdvancedDictionary();
+            ResetSolver();
+            method = "Advanced";
+            Advanced();
+        }
+        
+
         public static void loadSimpleDictionary()
         {
+            simpleDictionary = new List<string>();
             try
             {
                 StreamReader reader = new StreamReader(filePath + dictionaryName);
@@ -93,7 +104,7 @@ namespace Wordsearch_Solver
                     line = reader.ReadLine();
                 }
                 Console.WriteLine("Simple dictionaty loaded");
-                Console.WriteLine("First word: " + simpleDictionary[1]);
+                Console.WriteLine("First word: " + simpleDictionary[0]);
             }
             catch
             {
@@ -104,6 +115,7 @@ namespace Wordsearch_Solver
         private static void ResetSolver()
         {
             notFound = new List<string>(simpleDictionary);
+            found = new List<string>();
             gridCellsVisited = 0;
             dictionaryEntriesVisited = 0;
         }
@@ -232,6 +244,7 @@ namespace Wordsearch_Solver
 
         public static void WriteResuts(string loadTime, string solveTime)
         {
+            Console.WriteLine("Outputing: " + method + "_" + "Results.txt\n");
             StreamWriter writer = new StreamWriter(filePath + method + "_" + "Results.txt");
 
             writer.WriteLine("NUMBER_OF_WORDS_MATCHED " + found.Capacity);
@@ -245,8 +258,8 @@ namespace Wordsearch_Solver
             writer.WriteLine("\nNUMBER_OF_GRID_CELLS_VISITED " + gridCellsVisited);
             writer.WriteLine("NUMBER_OF_DICTIONARY_ENTRIES_VISITED " + dictionaryEntriesVisited);
 
-            Console.WriteLine("/nTIME_TO_POPULATE_GRID_STRUCTURE " + loadTime);
-            Console.WriteLine("TIME_TO_SOLVE_PUZZLE" + solveTime);
+            writer.WriteLine("\nTIME_TO_POPULATE_GRID_STRUCTURE " + loadTime);
+            writer.WriteLine("TIME_TO_SOLVE_PUZZLE " + solveTime);
             writer.Close();
         }
 
@@ -255,6 +268,41 @@ namespace Wordsearch_Solver
             foreach (string word in words)
             {
                 wr.WriteLine(word);
+            }
+        }
+
+        private static void loadAdvancedDictionary()
+        {
+            loadSimpleDictionary();
+            int dictionarySize = simpleDictionary.Capacity;
+
+            for(int i = 0; i < dictionarySize; i++)
+            {
+                string word = simpleDictionary[i];
+                //int wordSize = word.Length;
+
+                char[] charArray = word.ToCharArray();
+
+                bool match = false;
+                foreach (Cell root in advancedDictionary)
+                {
+                    if (root.GetLetter() == word[0])
+                    {
+                        match = true;
+
+                        Cell current = root;
+                        int depth = 0;
+
+                        while (match)
+                        {
+                            match = false;
+                            foreach (Cell cell in current.nextLetters)
+                            {
+
+                            }
+                        }
+                    }
+                }
             }
         }
     }
