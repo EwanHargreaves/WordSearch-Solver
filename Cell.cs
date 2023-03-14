@@ -13,11 +13,11 @@ namespace Wordsearch_Solver
 
         public List<Cell> nextLetters = new List<Cell>();
 
-        Cell (char pLetter) : this (pLetter, "")
+        public Cell (char pLetter) : this (pLetter, "")
         {
         }
 
-        private Cell(char pLetter, string pWord)
+        public Cell(char pLetter, string pWord)
         {
             letter=pLetter;
             word = pWord;

@@ -32,6 +32,7 @@ namespace Wordsearch_Solver
                 Wordsearch.WriteResuts(loadTime, solveTime);
 
                 //Advanced solution
+                Wordsearch.AdvancedSolve();
             }
         }
     }

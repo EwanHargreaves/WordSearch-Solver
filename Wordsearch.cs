@@ -77,15 +77,6 @@ namespace Wordsearch_Solver
             method = "Simple";
             Simple();
         }
-
-        
-        public static void AdvancedSolve()
-        {
-            loadAdvancedDictionary();
-            ResetSolver();
-            method = "Advanced";
-            Advanced();
-        }
         
 
         public static void loadSimpleDictionary()
@@ -103,6 +94,7 @@ namespace Wordsearch_Solver
                     simpleDictionary.Add(line);
                     line = reader.ReadLine();
                 }
+                simpleDictionary.Add(line);
                 Console.WriteLine("Simple dictionaty loaded");
                 Console.WriteLine("First word: " + simpleDictionary[0]);
             }
@@ -247,7 +239,7 @@ namespace Wordsearch_Solver
             Console.WriteLine("Outputing: " + method + "_" + "Results.txt\n");
             StreamWriter writer = new StreamWriter(filePath + method + "_" + "Results.txt");
 
-            writer.WriteLine("NUMBER_OF_WORDS_MATCHED " + found.Capacity);
+            writer.WriteLine("NUMBER_OF_WORDS_MATCHED " + found.Count);
 
             writer.WriteLine("\nWORDS_MATCHED_IN_GRID");
             Output(writer,found);
@@ -271,17 +263,23 @@ namespace Wordsearch_Solver
             }
         }
 
+        public static void AdvancedSolve()
+        {
+            loadAdvancedDictionary();
+            ResetSolver();
+            method = "Advanced";
+            //Advanced();
+        }
+
         private static void loadAdvancedDictionary()
         {
             loadSimpleDictionary();
-            int dictionarySize = simpleDictionary.Capacity;
+            int dictionarySize = simpleDictionary.Count;
 
             for(int i = 0; i < dictionarySize; i++)
             {
                 string word = simpleDictionary[i];
-                //int wordSize = word.Length;
-
-                char[] charArray = word.ToCharArray();
+                int wordSize = word.Length;
 
                 bool match = false;
                 foreach (Cell root in advancedDictionary)
@@ -296,12 +294,55 @@ namespace Wordsearch_Solver
                         while (match)
                         {
                             match = false;
-                            foreach (Cell cell in current.nextLetters)
+                            foreach (Cell next in current.nextLetters)
                             {
+                                if (next.GetLetter() == word[depth + 1])
+                                {
+                                    current = next;
+                                    match = true;
+                                    depth++;
 
+                                    if (depth + 1 >= wordSize)
+                                        depth--;
+                                    
+
+                                    if (depth == wordSize)
+                                    {
+                                        next.SetWord(word);
+                                        break;
+                                    }
+                                    break;
+                                }
                             }
                         }
+                        for (int j = depth + 1; j < wordSize - 1; j++)
+                        {
+                            Cell newCell = new Cell(word[j]);
+                            current.AddCell(newCell);
+                            current = newCell;
+                        }
+                        Cell lastCell = new Cell(word[wordSize - 1], word);
+                        current.AddCell(lastCell);
+                        match = true;
+                        break;
                     }
+                }
+                if (match == false)
+                {
+                    Cell root = new Cell(word[0]);
+                    Cell current = root;
+
+                    for (int j = 1; j < wordSize - 1; j++)
+                    {
+                        Cell newCell = new Cell(word[j]);
+                        current.AddCell(newCell);
+                        current = newCell;
+                    }
+
+                    Cell lastCell = new Cell(word[wordSize - 1],word);
+                    current.AddCell(lastCell);
+                    advancedDictionary.Add(root);
+                    //What is root?
                 }
             }
         }
