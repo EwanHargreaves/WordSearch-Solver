@@ -175,14 +175,12 @@ namespace Wordsearch_Solver
 
             for (int i = 1; i <= 8; i++)
             {
-                int[] dir = GetDirection(i);
-                int hor = x + dir[0];
-                int vert = y + dir[1];
-
-                if (!ValidPos(hor, vert))
+                int[] direction = GetDirection(i);
+                char? next = nextLetterInDirection(direction, x, y, 1);
+                if (next == null)
                     continue;
 
-                if (grid[hor + (vert * length)] == word[1])
+                if (next == word[1])
                     check.Add(i);
             }
             return check;
@@ -370,6 +368,7 @@ namespace Wordsearch_Solver
             return newCell;
         }
 
+        /*
         private struct Search
         {
             public Search(int pDirection, Cell pNextCell)
@@ -381,7 +380,9 @@ namespace Wordsearch_Solver
             public int direction { get; }
             public Cell nextInLine { get; set; }
         }
+        */
 
+        /*
         private static void Advanced()
         {
             for (int y = 0; y < length; y++)
@@ -401,6 +402,7 @@ namespace Wordsearch_Solver
                                     int[] direction = GetDirection(i);
                                     char? next = nextLetterInDirection(direction,x,y,1);
 
+                                    gridCellsVisited++;
                                     if(next == nextLetter.GetLetter())
                                     {
                                         Search possibleWord = new Search(i,nextLetter);
@@ -422,6 +424,7 @@ namespace Wordsearch_Solver
 
                                 do
                                 {
+                                    //Reached end of word
                                     if (path.nextInLine.GetWord() != "")
                                     {
                                         string word = path.nextInLine.GetWord();
@@ -456,6 +459,7 @@ namespace Wordsearch_Solver
                 }
             }
         }
+        */
 
         private static char? nextLetterInDirection(int[] direction , int x, int y, int depth)
         {
@@ -466,6 +470,102 @@ namespace Wordsearch_Solver
                 return null;
 
             return grid[newX + (newY * length)];
+        }
+
+
+        private static void Advanced()
+        {
+            for (int y = 0; y < length; y++)
+            {
+                for (int x = 0; x < length; x++)
+                {
+                    checkCell(x,y);
+                }
+            }
+        }
+
+        private static void checkCell(int x, int y)
+        {
+            foreach (Cell root in advancedDictionary)
+            {
+                dictionaryEntriesVisited++;
+                matchingRoot(x, y, root);
+            }
+        }
+
+        public struct Searching
+        {
+            public Searching(int[] pDirection, Cell currentCell)
+            {
+                direction = pDirection;
+                cell = currentCell;
+            }
+
+            public int[] direction { get; } 
+            public Cell cell { get; set; }
+        }
+
+        private static void matchingRoot(int x, int y, Cell root)
+        {
+            if (grid[x + (y * length)] != root.GetLetter())
+                return;
+
+            List<Searching> possibleDirections = validDirections(x,y,root);
+
+            int depth = 2;
+            foreach (Searching search in possibleDirections)
+            {
+                recursiveSearch(search,x,y,depth);
+            }
+        }
+
+        //returns all directions in which the next letter matches a possible next letter from the root
+        public static List<Searching> validDirections(int x, int y, Cell root)
+        {
+            List<Searching> possibleDirections = new List<Searching>();
+            for (int i = 1; i <= 8; i++)
+            {
+                int[] direction = GetDirection(i);
+                char? letterInDirection = nextLetterInDirection(direction, x, y, 1);
+                if (letterInDirection == null)
+                    continue;
+
+                foreach (Cell nextCell in root.nextLetters)
+                {
+                    if (letterInDirection == nextCell.GetLetter())
+                    {
+                        Searching search = new Searching(direction, nextCell);
+                        possibleDirections.Add(search);
+                        break;
+                    }
+                }
+            }
+            return possibleDirections;
+        }
+
+        private static void recursiveSearch(Searching search, int x, int y, int depth)
+        {
+            string word = search.cell.GetWord();
+            if (word != "")
+            {
+                notFound.Remove(word);
+                string location = x + " " + y + " ";
+                found.Add(location + word);
+                return;
+            }
+
+            char? letterInDirection = nextLetterInDirection(search.direction, x, y, depth);
+            if (letterInDirection == null)
+                return;
+
+            foreach (Cell nextCell in search.cell.nextLetters)
+            {
+                if (letterInDirection == nextCell.GetLetter())
+                {
+                    Searching s = new Searching(search.direction, nextCell);
+                    recursiveSearch(s, x, y, ++depth);
+                }
+            }
         }
     }
 }
