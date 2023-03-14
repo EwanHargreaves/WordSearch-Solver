@@ -268,7 +268,7 @@ namespace Wordsearch_Solver
             loadAdvancedDictionary();
             ResetSolver();
             method = "Advanced";
-            //Advanced();
+            Advanced();
         }
 
         private static void loadAdvancedDictionary()
@@ -368,6 +368,104 @@ namespace Wordsearch_Solver
             Cell newCell = new Cell(word[depth]);
             current.AddCell(newCell);
             return newCell;
+        }
+
+        private struct Search
+        {
+            public Search(int pDirection, Cell pNextCell)
+            {
+                direction = pDirection;
+                nextInLine = pNextCell;
+            }
+
+            public int direction { get; }
+            public Cell nextInLine { get; set; }
+        }
+
+        private static void Advanced()
+        {
+            for (int y = 0; y < length; y++)
+            {
+                for (int x = 0; x < length; x++)
+                {
+                    foreach (Cell root in advancedDictionary)
+                    {
+                        dictionaryEntriesVisited++;
+                        if (grid[x + (y * length)] == root.GetLetter())
+                        {
+                            List<Search> directionsToCheck = new List<Search>();
+                            foreach (Cell nextLetter in root.nextLetters)
+                            {
+                                for (int i = 0; i < 8; i++)
+                                {
+                                    int[] direction = GetDirection(i);
+                                    char? next = nextLetterInDirection(direction,x,y,1);
+
+                                    if(next == nextLetter.GetLetter())
+                                    {
+                                        Search possibleWord = new Search(i,nextLetter);
+                                        directionsToCheck.Add(possibleWord);
+                                    }
+                                }
+                            }
+
+                            if (directionsToCheck.Count == 0)
+                                continue;
+
+
+                            for (int i = 0; i < directionsToCheck.Count; i++)
+                            {
+                                Search path = directionsToCheck[i];
+                                int depth = 2;
+                                int[] direction = GetDirection(path.direction);
+                                bool match = true;
+
+                                do
+                                {
+                                    if (path.nextInLine.GetWord() != "")
+                                    {
+                                        string word = path.nextInLine.GetWord();
+
+                                        notFound.Remove(word);
+                                        string location = x + " " + y + " ";
+                                        found.Add(location + word);
+                                    }
+
+                                    if (path.nextInLine.nextLetters.Count == 0)
+                                        break;
+
+                                    char? next = nextLetterInDirection(direction, x, y, depth);
+                                    if (next == null)
+                                        break;
+
+                                    match = false;
+                                    foreach (Cell nextLetter in path.nextInLine.nextLetters)
+                                    {
+                                        if (next == nextLetter.GetLetter())
+                                        {
+                                            path.nextInLine = nextLetter;
+                                            match = true;
+                                            depth++;
+                                        }
+                                    }
+
+                                } while (match);
+                            }                          
+                        }
+                    }
+                }
+            }
+        }
+
+        private static char? nextLetterInDirection(int[] direction , int x, int y, int depth)
+        {
+            int newX = x + (direction[0] * depth);
+            int newY = y + (direction[1] * depth);
+
+            if (!ValidPos(newX, newY))
+                return null;
+
+            return grid[newX + (newY * length)];
         }
     }
 }
