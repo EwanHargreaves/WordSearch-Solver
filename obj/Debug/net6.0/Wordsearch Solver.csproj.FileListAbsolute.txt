@@ -28,3 +28,18 @@ C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch-Solver\obj\Debu
 C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch-Solver\obj\Debug\net6.0\ref\Wordsearch Solver.dll
 C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch-Solver\obj\Debug\net6.0\Wordsearch Solver.pdb
 C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch-Solver\obj\Debug\net6.0\Wordsearch Solver.genruntimeconfig.cache
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\bin\Debug\net6.0\Wordsearch Solver.exe
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\bin\Debug\net6.0\Wordsearch Solver.deps.json
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\bin\Debug\net6.0\Wordsearch Solver.runtimeconfig.json
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\bin\Debug\net6.0\Wordsearch Solver.dll
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\bin\Debug\net6.0\ref\Wordsearch Solver.dll
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\bin\Debug\net6.0\Wordsearch Solver.pdb
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\obj\Debug\net6.0\Wordsearch Solver.csproj.AssemblyReference.cache
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\obj\Debug\net6.0\Wordsearch Solver.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\obj\Debug\net6.0\Wordsearch Solver.AssemblyInfoInputs.cache
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\obj\Debug\net6.0\Wordsearch Solver.AssemblyInfo.cs
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\obj\Debug\net6.0\Wordsearch Solver.csproj.CoreCompileInputs.cache
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\obj\Debug\net6.0\Wordsearch Solver.dll
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\obj\Debug\net6.0\ref\Wordsearch Solver.dll
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\obj\Debug\net6.0\Wordsearch Solver.pdb
+C:\Users\Houst\Desktop\Personal Projects\Coding Projects\Example Work\Wordsearch-Solver\obj\Debug\net6.0\Wordsearch Solver.genruntimeconfig.cache

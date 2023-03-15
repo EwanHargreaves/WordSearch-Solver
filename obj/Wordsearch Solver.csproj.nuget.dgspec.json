@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Houst\\Desktop\\Personal Projects\\Example Work\\Wordsearch-Solver\\Wordsearch Solver.csproj": {}
+    "C:\\Users\\Houst\\Desktop\\Personal Projects\\Coding Projects\\Example Work\\Wordsearch-Solver\\Wordsearch Solver.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Houst\\Desktop\\Personal Projects\\Example Work\\Wordsearch-Solver\\Wordsearch Solver.csproj": {
+    "C:\\Users\\Houst\\Desktop\\Personal Projects\\Coding Projects\\Example Work\\Wordsearch-Solver\\Wordsearch Solver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Houst\\Desktop\\Personal Projects\\Example Work\\Wordsearch-Solver\\Wordsearch Solver.csproj",
+        "projectUniqueName": "C:\\Users\\Houst\\Desktop\\Personal Projects\\Coding Projects\\Example Work\\Wordsearch-Solver\\Wordsearch Solver.csproj",
         "projectName": "Wordsearch Solver",
-        "projectPath": "C:\\Users\\Houst\\Desktop\\Personal Projects\\Example Work\\Wordsearch-Solver\\Wordsearch Solver.csproj",
+        "projectPath": "C:\\Users\\Houst\\Desktop\\Personal Projects\\Coding Projects\\Example Work\\Wordsearch-Solver\\Wordsearch Solver.csproj",
         "packagesPath": "C:\\Users\\Houst\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Houst\\Desktop\\Personal Projects\\Example Work\\Wordsearch-Solver\\obj\\",
+        "outputPath": "C:\\Users\\Houst\\Desktop\\Personal Projects\\Coding Projects\\Example Work\\Wordsearch-Solver\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -12,7 +12,8 @@ namespace Wordsearch_Solver
             "puzzle 4",
             "puzzle 5",
             "Large dictionary",
-            "Large dictionary - 3 Letter min"
+            "Large dictionary - 3 Letter min",
+            "Small dictionary"
         };
         static void Main(string[] args)
         {
