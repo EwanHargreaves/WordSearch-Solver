@@ -18,9 +18,9 @@ In this project all puzzle grids can assumed to be square.
 Compare the efficiency of solving the wordsearch with 'simple' array-based structured compared to using a more advanced tree structure for either the grid or dictionary. Diagnostic results for both methods should be included in a results report.
 
 ### Provided files
-Each grid puzzle will be in a text file called wordsearch_grid.txt and you are to implement code that can populate the grid of your data structure by reading the letters contained in the file. The data file consists of a single integer (n), followed by n * n letters, each in the range A-Z. You can assume that all letters and words provided are in upper-case format.
+Each grid puzzle will be in a text file called **wordsearch_grid.txt** and you are to implement code that can populate the grid of your data structure by reading the letters contained in the file. The data file consists of a single integer (n), followed by n * n letters, each in the range A-Z. You can assume that all letters and words provided are in upper-case format.
 
-A dictionary will be provided in dictionary.txt.
+A dictionary will be provided in **dictionary.txt**.
 
 ## ToDo
 - How do both solutions deal with repeated words
