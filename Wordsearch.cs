@@ -92,7 +92,7 @@ namespace Wordsearch_Solver
                 while (reader.EndOfStream == false)
                 {
                     simpleDictionary.Add(line);
-                    line = reader.ReadLine();
+                    line = reader.ReadLine().ToUpper();
                 }
                 simpleDictionary.Add(line);
                 Console.WriteLine("Simple dictionaty loaded");
@@ -264,6 +264,7 @@ namespace Wordsearch_Solver
         public static void AdvancedSolve()
         {
             loadAdvancedDictionary();
+            Console.WriteLine("Advanced dictionary loaded");
             ResetSolver();
             method = "Advanced";
             Advanced();

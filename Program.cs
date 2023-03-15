@@ -10,7 +10,8 @@ namespace Wordsearch_Solver
             "puzzle 2",
             "puzzle 3",
             "puzzle 4",
-            "puzzle 5"
+            "puzzle 5",
+            "Large dictionary"
         };
         static void Main(string[] args)
         {
@@ -23,12 +24,14 @@ namespace Wordsearch_Solver
                 Wordsearch.setPuzzle(puzzle);
                 stopwatch.Stop();
                 string loadTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
+                stopwatch.Restart();
 
                 //Simple solution
                 stopwatch.Start();
                 Wordsearch.SimpleSolve();
                 stopwatch.Stop();
                 string solveTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
+                stopwatch.Restart();
                 Wordsearch.WriteResuts(loadTime, solveTime);
 
                 //Advanced solution
