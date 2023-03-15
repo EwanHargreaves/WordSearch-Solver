@@ -56,4 +56,5 @@ Instead of the dictionary being stored as a list of strings. The characters in t
 
 ### Bugs
 - Simple solution incompatible with 2 letter words
+- Possible issue with timings on first test
 
