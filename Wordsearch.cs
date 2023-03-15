@@ -273,6 +273,7 @@ namespace Wordsearch_Solver
         private static void loadAdvancedDictionary()
         {
             loadSimpleDictionary();
+            advancedDictionary = new List<Cell>();
             int dictionarySize = simpleDictionary.Count;
 
             for(int i = 0; i < dictionarySize; i++)
