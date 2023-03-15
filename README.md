@@ -12,6 +12,8 @@ If a dictionary is provided to support the searching, this may contain either th
 
 In this project all puzzle grids can assumed to be square.
 
+![Example of a wordsearch](README-fig1.png)
+
 ## Objective
 Compare the efficiency of solving the wordsearch with 'simple' array-based structured compared to using a more advanced tree structure for either the grid or dictionary. Diagnostic results for both methods should be included in a results report.
 
