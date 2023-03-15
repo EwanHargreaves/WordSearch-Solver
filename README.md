@@ -51,6 +51,7 @@ Instead of the dictionary being stored as a list of strings. The characters in t
 ## To-do
 - How do both solutions deal with repeated words?
 - Clean up tree structure to reduce tree size as words are discovered in advanced solution (destructor for Cell class)
+- Get better avarages for graph report
 
 
 ### Bugs
