@@ -22,6 +22,26 @@ Each grid puzzle will be in a text file called **wordsearch_grid.txt** and you a
 
 A dictionary will be provided in **dictionary.txt**.
 
+**Example Ouutput**
+```
+NUMBER_OF_WORDS_MATCHED n
+
+WORDS_MATCHED_IN_GRID
+n1 n2 WORD1
+n1 n2 WORD2
+etc.
+
+WORDS_UNMATCHED_IN_GRID
+WORDn
+etc.
+
+NUMBER_OF_GRID_CELLS_VISITED n
+NUMBER_OF_DICTIONARY_ENTRIES_VISITED n
+
+TIME_TO_POPULATE_GRID_STRUCTURE f
+TIME_TO_SOLVE_PUZZLE f
+```
+
 ## ToDo
 - How do both solutions deal with repeated words?
 - Clean up tree structure to reduce tree size as words are discovered in advanced solution (destructor for Cell class)
