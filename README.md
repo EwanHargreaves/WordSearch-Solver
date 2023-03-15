@@ -43,7 +43,7 @@ TIME_TO_SOLVE_PUZZLE f
 ```
 
 ## Tree structure for dictionary
-![Example of a tree structure](README-fig2.png)
+<img src="README-fig2.png" alt="Example of a tree structure" width="500"/>
 
 ## ToDo
 - How do both solutions deal with repeated words?
