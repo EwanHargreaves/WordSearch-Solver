@@ -43,6 +43,9 @@ TIME_TO_SOLVE_PUZZLE f
 ```
 
 ## Tree structure for dictionary
+Below image shows how tree structure is implemented in the more advanced solution.
+Instead of the dicionary being stored as a list of strings. The caracters in the words are instead converted into noded which link to possible words that could come after them. For examle, the words 'COMPILE' and 'COMPUTER' share the same 4 starting characters, as such, the letter 'P' here will additionaly link to 'I' and 'U' which continue to complete the respective words.
+ When we follow the links we 'cutoff' possible words as we explore the tree. Which differs from the simple solution that attempts to match each word in the dictionary individually.
 <img src="README-fig2.png" alt="Example of a tree structure" width="500"/>
 
 ## ToDo
