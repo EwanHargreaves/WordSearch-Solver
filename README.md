@@ -42,6 +42,9 @@ TIME_TO_POPULATE_GRID_STRUCTURE f
 TIME_TO_SOLVE_PUZZLE f
 ```
 
+## Tree structure for dictionary
+![Example of a tree structure](README-fig2.png)
+
 ## ToDo
 - How do both solutions deal with repeated words?
 - Clean up tree structure to reduce tree size as words are discovered in advanced solution (destructor for Cell class)
