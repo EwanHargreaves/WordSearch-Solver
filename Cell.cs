@@ -10,7 +10,6 @@ namespace Wordsearch_Solver
     {
         private char letter;
         private string word;
-
         public List<Cell> nextLetters = new List<Cell>();
 
         public Cell (char pLetter) : this (pLetter, "")
