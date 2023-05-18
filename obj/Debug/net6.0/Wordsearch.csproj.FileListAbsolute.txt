@@ -1,0 +1,30 @@
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\obj\Debug\net6.0\Wordsearch.csproj.AssemblyReference.cache
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\obj\Debug\net6.0\Wordsearch.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\obj\Debug\net6.0\Wordsearch.AssemblyInfoInputs.cache
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\obj\Debug\net6.0\Wordsearch.AssemblyInfo.cs
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\obj\Debug\net6.0\Wordsearch.csproj.CoreCompileInputs.cache
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\bin\Debug\net6.0\Wordsearch.exe
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\bin\Debug\net6.0\Wordsearch.deps.json
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\bin\Debug\net6.0\Wordsearch.runtimeconfig.json
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\bin\Debug\net6.0\Wordsearch.dll
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\bin\Debug\net6.0\Wordsearch.pdb
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\obj\Debug\net6.0\Wordsearch.dll
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\obj\Debug\net6.0\refint\Wordsearch.dll
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\obj\Debug\net6.0\Wordsearch.pdb
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\obj\Debug\net6.0\Wordsearch.genruntimeconfig.cache
+C:\Users\Houst\Desktop\Personal Projects\Example Work\Wordsearch\obj\Debug\net6.0\ref\Wordsearch.dll
+C:\Users\Houst\Desktop\word\WordSearch-Solver\bin\Debug\net6.0\Wordsearch.exe
+C:\Users\Houst\Desktop\word\WordSearch-Solver\bin\Debug\net6.0\Wordsearch.deps.json
+C:\Users\Houst\Desktop\word\WordSearch-Solver\bin\Debug\net6.0\Wordsearch.runtimeconfig.json
+C:\Users\Houst\Desktop\word\WordSearch-Solver\bin\Debug\net6.0\Wordsearch.dll
+C:\Users\Houst\Desktop\word\WordSearch-Solver\bin\Debug\net6.0\Wordsearch.pdb
+C:\Users\Houst\Desktop\word\WordSearch-Solver\obj\Debug\net6.0\Wordsearch.csproj.AssemblyReference.cache
+C:\Users\Houst\Desktop\word\WordSearch-Solver\obj\Debug\net6.0\Wordsearch.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Houst\Desktop\word\WordSearch-Solver\obj\Debug\net6.0\Wordsearch.AssemblyInfoInputs.cache
+C:\Users\Houst\Desktop\word\WordSearch-Solver\obj\Debug\net6.0\Wordsearch.AssemblyInfo.cs
+C:\Users\Houst\Desktop\word\WordSearch-Solver\obj\Debug\net6.0\Wordsearch.csproj.CoreCompileInputs.cache
+C:\Users\Houst\Desktop\word\WordSearch-Solver\obj\Debug\net6.0\Wordsearch.dll
+C:\Users\Houst\Desktop\word\WordSearch-Solver\obj\Debug\net6.0\refint\Wordsearch.dll
+C:\Users\Houst\Desktop\word\WordSearch-Solver\obj\Debug\net6.0\Wordsearch.pdb
+C:\Users\Houst\Desktop\word\WordSearch-Solver\obj\Debug\net6.0\Wordsearch.genruntimeconfig.cache
+C:\Users\Houst\Desktop\word\WordSearch-Solver\obj\Debug\net6.0\ref\Wordsearch.dll

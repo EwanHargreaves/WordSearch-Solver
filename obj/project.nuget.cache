@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/sJWWO3gurQAiwPm+ED0I2DMToE4dGR0AX79Nskc5x3bL9oiepNuU8sb0jEzN6a5uhjWIINmipOn9+nKPUv7LA==",
+  "dgSpecHash": "3kNgNBA6nMPi2+IdFgO7r2V42TvaJ9JUMJqmSfC7wZtufRMIEMDfVSx9Nqeuwu1L/iYuEbyTWayl5OeEhNEPGw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Houst\\Desktop\\Personal Projects\\Coding Projects\\Example Work\\Wordsearch-Solver\\Wordsearch Solver.csproj",
+  "projectFilePath": "C:\\Users\\Houst\\Desktop\\word\\WordSearch-Solver\\Wordsearch.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

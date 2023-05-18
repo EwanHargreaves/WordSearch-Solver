@@ -1,11 +1,32 @@
 ﻿using System;
 using System.Diagnostics;
+using Wordsearch;
 
 namespace Wordsearch_Solver
 {
     class Program
     {
-        static string[] puzzles = { 
+        static void Main(string[] args)
+        {
+            foreach (string path in puzzles)
+            {
+                string filepath = "Puzzles/" + path + "/";
+
+                WordsearchData? wordsearch = loadPuzzle(filepath);
+
+                if (wordsearch == null)
+                    break;
+
+                ISolver sSolver = new SimpleSolver(wordsearch);
+                solveWith(sSolver, wordsearch.getLoadTime(), filepath);
+
+                ISolver aSolver = new AdvancedSolver(wordsearch);
+                solveWith(aSolver, wordsearch.getLoadTime(), filepath);
+                
+            }
+        }
+
+        static string[] puzzles = {
             "puzzle 1",
             "puzzle 2",
             "puzzle 3",
@@ -15,35 +36,30 @@ namespace Wordsearch_Solver
             "Large dictionary - 3 Letter min",
             "Small dictionary"
         };
-        static void Main(string[] args)
+
+        static WordsearchData? loadPuzzle(string filepath)
         {
             Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            PuzzleLoader loader = new PuzzleLoader(filepath);
+            WordsearchData? wordsearch = loader.getWordsearch();
+            stopwatch.Stop();
+            string loadTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
+            if (wordsearch != null)
+                wordsearch.setLoadTime(loadTime);
+            return wordsearch;
+        }
 
-            foreach (string puzzle in puzzles)
-            {
-                //Setup
-                stopwatch.Start();
-                Wordsearch.setPuzzle(puzzle);
-                stopwatch.Stop();
-                string loadTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
-                stopwatch.Restart();
+        static void solveWith(ISolver solver, string loadTime, string filepath)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            solver.solve();
+            stopwatch.Stop();
 
-                //Simple solution
-                stopwatch.Start();
-                Wordsearch.SimpleSolve();
-                stopwatch.Stop();
-                string solveTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
-                stopwatch.Restart();
-                Wordsearch.WriteResuts(loadTime, solveTime);
-
-                //Advanced solution
-                stopwatch.Start();
-                Wordsearch.AdvancedSolve();
-                stopwatch.Stop();
-                solveTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
-                Wordsearch.WriteResuts(loadTime,solveTime);
-
-            }
+            string solveTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
+            solver.writeResults(loadTime, solveTime, filepath);
         }
     }
+   
 }

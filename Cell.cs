@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Wordsearch_Solver
 {
-    internal class Cell
+    public class Cell
     {
         private char letter;
         private string word;
         public List<Cell> nextLetters = new List<Cell>();
 
-        public Cell (char pLetter) : this (pLetter, "")
+        public Cell(char pLetter) : this(pLetter, "")
         {
         }
 
         public Cell(char pLetter, string pWord)
         {
-            letter=pLetter;
+            letter = pLetter;
             word = pWord;
         }
 
