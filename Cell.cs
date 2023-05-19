@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Wordsearch_Solver
 {
     public class Cell
     {
-        private char letter;
-        private string word;
+        public char letter { get; private set; }
+        public string word { get; set; }
+
         public List<Cell> nextLetters = new List<Cell>();
 
         public Cell(char pLetter) : this(pLetter, "")
@@ -25,21 +23,6 @@ namespace Wordsearch_Solver
         public void AddCell(Cell cell)
         {
             nextLetters.Add(cell);
-        }
-
-        public char GetLetter()
-        {
-            return letter;
-        }
-
-        public void SetWord(string pWord)
-        {
-            word = pWord;
-        }
-
-        public string GetWord()
-        {
-            return word;
         }
     }
 }

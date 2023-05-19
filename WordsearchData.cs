@@ -71,7 +71,7 @@ namespace Wordsearch_Solver
 
             foreach(Cell root in advancedDictionary)
             {
-                if(root.GetLetter() == word[0])
+                if(root.letter == word[0])
                 {
                     addToRoot(ref match, root, word);
                 }
@@ -108,7 +108,7 @@ namespace Wordsearch_Solver
                 match = false;
                 foreach(Cell next in current.nextLetters)
                 {
-                    if(next.GetLetter() == word[depth + 1])
+                    if(next.letter == word[depth + 1])
                     {
                         current = next;
                         match = true;
@@ -119,7 +119,7 @@ namespace Wordsearch_Solver
 
                         if(depth == wordSize)
                         {
-                            next.SetWord(word);
+                            next.word = word;
                             break;
                         }
                         break;

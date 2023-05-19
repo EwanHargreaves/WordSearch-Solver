@@ -55,7 +55,7 @@ namespace Wordsearch
 
         private void matchingRoot(int x, int y, Cell root)
         {
-            if (grid[x + (y * length)] != root.GetLetter())
+            if (grid[x + (y * length)] != root.letter)
                 return;
 
             List<Searching> possibleDirections = validDirections(x, y, root);
@@ -80,7 +80,7 @@ namespace Wordsearch
 
                 foreach (Cell nextCell in root.nextLetters)
                 {
-                    if (letterInDirection == nextCell.GetLetter())
+                    if (letterInDirection == nextCell.letter)
                     {
                         Searching search = new Searching(direction, nextCell);
                         possibleDirections.Add(search);
@@ -93,7 +93,7 @@ namespace Wordsearch
 
         private void recursiveSearch(Searching search, int x, int y, int depth)
         {
-            string word = search.cell.GetWord();
+            string word = search.cell.word;
             if (word != "")
             {
                 notFound.Remove(word);
@@ -108,7 +108,7 @@ namespace Wordsearch
 
             foreach (Cell nextCell in search.cell.nextLetters)
             {
-                if (letterInDirection == nextCell.GetLetter())
+                if (letterInDirection == nextCell.letter)
                 {
                     Searching s = new Searching(search.direction, nextCell);
                     recursiveSearch(s, x, y, ++depth);
