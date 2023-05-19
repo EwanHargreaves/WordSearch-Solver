@@ -1,72 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wordsearch;
 
 namespace Wordsearch_Solver
 {
     public class WordsearchData
     {
-        int length;
-        char[] grid;
-        List<string> simpleDictionary = new List<string>();
-        List<Cell> advancedDictionary = new List<Cell>();
-
-        string loadTime = "";
+        public int length { get; }
+        public char[] grid { get; }
+        public List<string> simpleDictionary { get; }
+        public List<Cell> advancedDictionary { get; }
+        public string loadTime { get; set; }
 
         public WordsearchData(char[] _grid, List<string> _simpleDictionary, int _length)
         {
             grid = _grid;
-            simpleDictionary = _simpleDictionary;
             length = _length;
-        }
-
-        public int GetLength()
-        {
-            return length;
-        }
-
-        public char[] GetGrid()
-        {
-            return grid;
-        }
-
-        public List<string> GetSimpleDictionary()
-        {
-            return simpleDictionary;
-        }
-
-        public void SetLoadTime(string _loadTime)
-        {
-            loadTime = _loadTime;
-        }
-
-        public string GetLoadTime()
-        {
-            return loadTime;
-        }
-
-        public List<Cell> GetAdvancedDictionary()
-        {
-            return advancedDictionary;
+            simpleDictionary = _simpleDictionary;
+            advancedDictionary = new List<Cell>();
+            loadTime = "";
         }
 
         public void LoadAdvancedDictionary()
         {
-            int dictionarySize = simpleDictionary.Count;
-
-            for (int i =0; i< dictionarySize; i++)
+            foreach(string word in simpleDictionary)
             {
-                AddWord(i);
+                AddWord(word);
             }
         }
 
-        private void AddWord(int i)
+        private void AddWord(string word)
         {
-            string word = simpleDictionary[i];
-
             bool match = false;
 
             foreach(Cell root in advancedDictionary)
@@ -82,15 +46,14 @@ namespace Wordsearch_Solver
 
         private void AddNewRoot(string word)
         {
-            int wordSize = word.Length;
             Cell root = new Cell(word[0]);
             Cell current = root;
 
-            for (int j = 1; j < wordSize - 1; j++)
+            for (int i = 1; i < word.Length - 1; i++)
             {
-                current = AddNextCell(word, current, j);
+                current = AddNextCell(word[i], current);
             }
-            AddLastCell(word, current);
+            AddLastCell(word[word.Length - 1], current, word);
             advancedDictionary.Add(root);
             
         }
@@ -99,11 +62,10 @@ namespace Wordsearch_Solver
         {
             int wordSize = word.Length;
             match = true;
-
             Cell current = root;
             int depth = 0;
 
-            while (match)
+            while (match && depth < wordSize - 1)
             {
                 match = false;
                 foreach(Cell next in current.nextLetters)
@@ -126,25 +88,25 @@ namespace Wordsearch_Solver
                     }
                 }
             }
+
             for(int j= depth + 1; j < wordSize - 1; j++)
             {
-                current = AddNextCell(word, current, j);
+                current = AddNextCell(word[j], current);
             }
-            AddLastCell(word, current);
+            AddLastCell(word[wordSize - 1], current, word);
             match = true;
 
         }
 
-        private void AddLastCell(string word, Cell current)
+        private void AddLastCell(char letter, Cell current, string word)
         {
-            int wordSize = word.Length;
-            Cell lastcell = new Cell(word[wordSize - 1], word);
+            Cell lastcell = new Cell(letter, word);
             current.AddCell(lastcell);
         }
 
-        private Cell AddNextCell(string word, Cell current, int depth)
+        private Cell AddNextCell(char letter, Cell current)
         {
-            Cell newCell = new Cell(word[depth]);
+            Cell newCell = new Cell(letter);
             current.AddCell(newCell);
             return newCell;
         }

@@ -9,9 +9,9 @@ namespace Wordsearch_Solver
 
         public SimpleSolver(WordsearchData _wordsearch)
         {
-            grid = _wordsearch.GetGrid();
-            length = _wordsearch.GetLength();
-            dictionary = _wordsearch.GetSimpleDictionary();
+            grid = _wordsearch.grid;
+            length = _wordsearch.length;
+            dictionary = _wordsearch.simpleDictionary;
             method = "Simple";
             notFound.AddRange(dictionary);
         }

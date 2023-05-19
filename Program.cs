@@ -18,10 +18,10 @@ namespace Wordsearch_Solver
                     break;
 
                 ISolver sSolver = new SimpleSolver(wordsearch);
-                SolveWith(sSolver, wordsearch.GetLoadTime(), filepath);
+                SolveWith(sSolver, wordsearch.loadTime, filepath);
 
                 ISolver aSolver = new AdvancedSolver(wordsearch);
-                SolveWith(aSolver, wordsearch.GetLoadTime(), filepath);
+                SolveWith(aSolver, wordsearch.loadTime, filepath);
                 
             }
         }
@@ -46,7 +46,8 @@ namespace Wordsearch_Solver
             stopwatch.Stop();
             string loadTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
             if (wordsearch != null)
-                wordsearch.SetLoadTime(loadTime);
+                wordsearch.loadTime = loadTime;
+
             return wordsearch;
         }
 

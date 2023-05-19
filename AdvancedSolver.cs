@@ -26,11 +26,11 @@ namespace Wordsearch
         public AdvancedSolver(WordsearchData _wordsearch)
         {
             _wordsearch.LoadAdvancedDictionary();
-            dictionary = _wordsearch.GetAdvancedDictionary();
-            length = _wordsearch.GetLength();
-            grid = _wordsearch.GetGrid();
+            dictionary = _wordsearch.advancedDictionary;
+            length = _wordsearch.length;
+            grid = _wordsearch.grid;
             method = "Advanced";
-            notFound = _wordsearch.GetSimpleDictionary();
+            notFound = _wordsearch.simpleDictionary;
         }
 
         override public void Solve()
