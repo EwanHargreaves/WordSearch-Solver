@@ -7,7 +7,7 @@ using Wordsearch_Solver;
 
 namespace Wordsearch
 {
-    public class AdvancedSolver : BaseSolver
+    internal class AdvancedSolver : BaseSolver
     {
         List<Cell> dictionary = new List<Cell>();
 

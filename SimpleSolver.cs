@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Wordsearch_Solver
 {
-    class SimpleSolver : BaseSolver
+    internal class SimpleSolver : BaseSolver
     {
-        List<string> dictionary;
+        private List<string> dictionary; 
 
         public SimpleSolver(WordsearchData _wordsearch)
         {
@@ -16,10 +13,10 @@ namespace Wordsearch_Solver
             length = _wordsearch.GetLength();
             dictionary = _wordsearch.GetSimpleDictionary();
             method = "Simple";
-            notFound = new List<string>(dictionary);
+            notFound.AddRange(dictionary);
         }
 
-        override public void Solve()
+        public override void Solve()
         {
             for (int y = 0; y < length; y++)
             {
@@ -70,8 +67,8 @@ namespace Wordsearch_Solver
                 if (depth + 1 == word.Length)
                 {
                     notFound.Remove(word);
-                    string location = x.ToString() + " " + y.ToString() + " ";
-                    found.Add(location + word);
+                    string location = $"{x} {y} ";
+                    found.Add($"{location}{word}");
                 }
             }
         }
