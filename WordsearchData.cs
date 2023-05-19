@@ -6,24 +6,24 @@ namespace Wordsearch_Solver
 {
     public class WordsearchData
     {
-        public int length { get; }
-        public char[] grid { get; }
-        public List<string> simpleDictionary { get; }
-        public List<Cell> advancedDictionary { get; }
-        public string loadTime { get; set; }
+        public int Length { get; }
+        public char[] Grid { get; }
+        public List<string> SimpleDictionary { get; }
+        public List<Cell> AdvancedDictionary { get; }
+        public string LoadTime { get; set; }
 
-        public WordsearchData(char[] _grid, List<string> _simpleDictionary, int _length)
+        public WordsearchData(char[] grid, List<string> simpleDictionary, int length)
         {
-            grid = _grid;
-            length = _length;
-            simpleDictionary = _simpleDictionary;
-            advancedDictionary = new List<Cell>();
-            loadTime = "";
+            Grid = grid;
+            Length = length;
+            SimpleDictionary = simpleDictionary;
+            AdvancedDictionary = new List<Cell>();
+            LoadTime = "";
         }
 
         public void LoadAdvancedDictionary()
         {
-            foreach(string word in simpleDictionary)
+            foreach(string word in SimpleDictionary)
             {
                 AddWord(word);
             }
@@ -33,9 +33,9 @@ namespace Wordsearch_Solver
         {
             bool match = false;
 
-            foreach(Cell root in advancedDictionary)
+            foreach(Cell root in AdvancedDictionary)
             {
-                if(root.letter == word[0])
+                if(root.Letter == word[0])
                 {
                     AddToRoot(ref match, root, word);
                 }
@@ -46,7 +46,7 @@ namespace Wordsearch_Solver
 
         private void AddNewRoot(string word)
         {
-            Cell root = new Cell(word[0]);
+            Cell root = new(word[0]);
             Cell current = root;
 
             for (int i = 1; i < word.Length - 1; i++)
@@ -54,7 +54,7 @@ namespace Wordsearch_Solver
                 current = AddNextCell(word[i], current);
             }
             AddLastCell(word[word.Length - 1], current, word);
-            advancedDictionary.Add(root);
+            AdvancedDictionary.Add(root);
             
         }
 
@@ -70,7 +70,7 @@ namespace Wordsearch_Solver
                 match = false;
                 foreach(Cell next in current.nextLetters)
                 {
-                    if(next.letter == word[depth + 1])
+                    if(next.Letter == word[depth + 1])
                     {
                         current = next;
                         match = true;
@@ -81,7 +81,7 @@ namespace Wordsearch_Solver
 
                         if(depth == wordSize)
                         {
-                            next.word = word;
+                            next.Word = word;
                             break;
                         }
                         break;
@@ -98,15 +98,15 @@ namespace Wordsearch_Solver
 
         }
 
-        private void AddLastCell(char letter, Cell current, string word)
+        private static void AddLastCell(char letter, Cell current, string word)
         {
-            Cell lastcell = new Cell(letter, word);
+            Cell lastcell = new(letter, word);
             current.AddCell(lastcell);
         }
 
-        private Cell AddNextCell(char letter, Cell current)
+        private static Cell AddNextCell(char letter, Cell current)
         {
-            Cell newCell = new Cell(letter);
+            Cell newCell = new(letter);
             current.AddCell(newCell);
             return newCell;
         }

@@ -5,10 +5,10 @@ namespace Wordsearch_Solver
 {
     public class Cell
     {
-        public char letter { get; private set; }
-        public string word { get; set; }
+        public char Letter { get; private set; }
+        public string Word { get; set; }
 
-        public List<Cell> nextLetters = new List<Cell>();
+        public List<Cell> nextLetters = new();
 
         public Cell(char pLetter) : this(pLetter, "")
         {
@@ -16,8 +16,8 @@ namespace Wordsearch_Solver
 
         public Cell(char pLetter, string pWord)
         {
-            letter = pLetter;
-            word = pWord;
+            Letter = pLetter;
+            Word = pWord;
         }
 
         public void AddCell(Cell cell)

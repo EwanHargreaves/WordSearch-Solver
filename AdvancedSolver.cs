@@ -6,28 +6,28 @@ namespace Wordsearch
 {
     internal class AdvancedSolver : BaseSolver
     {
-        private List<Cell> dictionary;
+        private readonly List<Cell> dictionary;
 
         public struct Searching
         {
-            public Searching(int[] _direction, Cell _currentCell)
+            public Searching(int[] direction, Cell currentCell)
             {
-                direction = _direction;
-                cell = _currentCell;
+                Direction = direction;
+                Cell = currentCell; 
             }
 
-            public int[] direction { get; }
-            public Cell cell { get; set; }
+            public int[] Direction { get; }
+            public Cell Cell { get; set; }
         }
 
         public AdvancedSolver(WordsearchData _wordsearch)
         {
             _wordsearch.LoadAdvancedDictionary();
-            dictionary = _wordsearch.advancedDictionary;
-            length = _wordsearch.length;
-            grid = _wordsearch.grid;
+            dictionary = _wordsearch.AdvancedDictionary;
+            length = _wordsearch.Length;
+            grid = _wordsearch.Grid;
             method = "Advanced";
-            notFound = _wordsearch.simpleDictionary;
+            notFound = _wordsearch.SimpleDictionary;
         }
 
         override public void Solve()
@@ -46,7 +46,7 @@ namespace Wordsearch
             foreach (Cell root in dictionary)
             {
                 dictionaryEntriesVisited++;
-                if (grid[x + (y * length)] == root.letter)
+                if (grid[x + (y * length)] == root.Letter)
                 {
                     MatchingRoot(x, y, root);
                 }
@@ -77,7 +77,7 @@ namespace Wordsearch
 
                 foreach (Cell nextCell in root.nextLetters)
                 {
-                    if (letterInDirection == nextCell.letter)
+                    if (letterInDirection == nextCell.Letter)
                     {
                         Searching search = new Searching(direction, nextCell);
                         possibleDirections.Add(search);
@@ -90,7 +90,7 @@ namespace Wordsearch
 
         private void RecursiveSearch(Searching search, int x, int y, int depth)
         {
-            string word = search.cell.word;
+            string word = search.Cell.Word;
             if (!string.IsNullOrEmpty(word))
             {
                 notFound.Remove(word);
@@ -99,15 +99,15 @@ namespace Wordsearch
                 return;
             }
 
-            char? letterInDirection = NextLetterInDirection(search.direction, x, y, depth);
+            char? letterInDirection = NextLetterInDirection(search.Direction, x, y, depth);
             if (letterInDirection == null)
                 return;
 
-            foreach (Cell nextCell in search.cell.nextLetters)
+            foreach (Cell nextCell in search.Cell.nextLetters)
             {
-                if (letterInDirection == nextCell.letter)
+                if (letterInDirection == nextCell.Letter)
                 {
-                    Searching s = new Searching(search.direction, nextCell);
+                    Searching s = new Searching(search.Direction, nextCell);
                     RecursiveSearch(s, x, y, ++depth);
                 }
             }

@@ -13,7 +13,7 @@ namespace Wordsearch_Solver
         protected int dictionaryEntriesVisited;
 
         protected List<string> notFound = new();
-        protected List<string> found = new List<string>();
+        protected List<string> found = new();
 
         protected string method = "";
 
@@ -41,7 +41,7 @@ namespace Wordsearch_Solver
             writer.Close();
         }
 
-        protected void WriteList(StreamWriter wr, List<string> words)
+        protected static void WriteList(StreamWriter wr, List<string> words)
         {
             foreach (string word in words)
             {
@@ -70,7 +70,7 @@ namespace Wordsearch_Solver
             return true;
         }
 
-        protected int[] GetDirection(int direction)
+        protected static int[] GetDirection(int direction)
         {
             return direction switch
             {

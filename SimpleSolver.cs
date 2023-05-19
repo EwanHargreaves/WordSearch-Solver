@@ -7,11 +7,11 @@ namespace Wordsearch_Solver
     {
         private List<string> dictionary; 
 
-        public SimpleSolver(WordsearchData _wordsearch)
+        public SimpleSolver(WordsearchData wordsearch)
         {
-            grid = _wordsearch.grid;
-            length = _wordsearch.length;
-            dictionary = _wordsearch.simpleDictionary;
+            grid = wordsearch.Grid;
+            length = wordsearch.Length;
+            dictionary = wordsearch.SimpleDictionary;
             method = "Simple";
             notFound.AddRange(dictionary);
         }
@@ -75,7 +75,7 @@ namespace Wordsearch_Solver
 
         List<int> PossibleDirections(int x, int y, string word)
         {
-            List<int> check = new List<int>();
+            List<int> check = new();
 
             for (int i = 1; i <= 8; i++)
             {

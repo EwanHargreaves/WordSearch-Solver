@@ -18,42 +18,42 @@ namespace Wordsearch_Solver
                     break;
 
                 ISolver sSolver = new SimpleSolver(wordsearch);
-                SolveWith(sSolver, wordsearch.loadTime, filepath);
+                SolveWith(sSolver, wordsearch.LoadTime, filepath);
 
                 ISolver aSolver = new AdvancedSolver(wordsearch);
-                SolveWith(aSolver, wordsearch.loadTime, filepath);
+                SolveWith(aSolver, wordsearch.LoadTime, filepath);
                 
             }
         }
 
-        static string[] puzzles = {
-            //"puzzle 1",
-            //"puzzle 2",
-            //"puzzle 3",
-            //"puzzle 4",
-            //"puzzle 5",
+        static readonly string[] puzzles = {
+            "puzzle 1",
+            "puzzle 2",
+            "puzzle 3",
+            "puzzle 4",
+            "puzzle 5",
             "Large dictionary",
             "Large dictionary - 3 Letter min",
-            //"Small dictionary"
+            "Small dictionary"
         };
 
         static WordsearchData? LoadPuzzle(string filepath)
         {
-            Stopwatch stopwatch = new Stopwatch();
+            Stopwatch stopwatch = new();
             stopwatch.Start();
-            PuzzleLoader loader = new PuzzleLoader(filepath);
-            WordsearchData? wordsearch = loader.wordsearch;
+            PuzzleLoader loader = new(filepath);
+            WordsearchData? wordsearch = loader.Wordsearch;
             stopwatch.Stop();
             string loadTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
             if (wordsearch != null)
-                wordsearch.loadTime = loadTime;
+                wordsearch.LoadTime = loadTime;
 
             return wordsearch;
         }
 
         static void SolveWith(ISolver solver, string loadTime, string filepath)
         {
-            Stopwatch stopwatch = new Stopwatch();
+            Stopwatch stopwatch = new();
             stopwatch.Start();
             solver.Solve();
             stopwatch.Stop();
