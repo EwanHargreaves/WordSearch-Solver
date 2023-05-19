@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Wordsearch_Solver
 {
     class PuzzleLoader
     {
-        WordsearchData? wordsearch;
-        int length = 0;
+        public WordsearchData? wordsearch { get; private set; }
+        private int length = 0;
         public PuzzleLoader(string path)
         {
             StreamReader[] readers = GetReaders(path);
@@ -19,12 +21,7 @@ namespace Wordsearch_Solver
             }
         }
 
-        public WordsearchData? GetWordsearch()
-        {
-            return wordsearch;
-        }
-
-        StreamReader[] GetReaders(string path)
+        private StreamReader[] GetReaders(string path)
         {
             const string GRID_PATH = "wordsearch_grid.txt";
             const string DICTIONARY_PATH = "dictionary.txt";
@@ -32,8 +29,8 @@ namespace Wordsearch_Solver
    
             try
             {
-                readers[0] = new StreamReader(path + GRID_PATH);
-                readers[1] = new StreamReader(path + DICTIONARY_PATH);
+                readers[0] = new StreamReader(Path.Combine(path, GRID_PATH));
+                readers[1] = new StreamReader(Path.Combine(path, DICTIONARY_PATH));
 
             }
             catch (Exception e)
@@ -44,14 +41,12 @@ namespace Wordsearch_Solver
             return readers;
         }
 
-        bool CheckReaders(StreamReader[] readers)
+        private bool CheckReaders(StreamReader[] readers)
         {
-            if (readers[0] == null || readers[1] == null)
-                return false;
-            return true;
+            return readers[0] != null && readers[1] != null;
         }
 
-        char[] ReadGrid(StreamReader gridReader)
+        private char[] ReadGrid(StreamReader gridReader)
         {
             char[] grid = new char[0];
             try
@@ -60,7 +55,7 @@ namespace Wordsearch_Solver
 
                 if (line == null)
                 {
-                    throw new Exception("null file");
+                    throw new Exception("Null file");
                 }
 
                 length = int.Parse(line);
@@ -91,7 +86,7 @@ namespace Wordsearch_Solver
             return grid;
         }
 
-        List<string> ReadDictionary(StreamReader readDictionary)
+        private List<string> ReadDictionary(StreamReader readDictionary)
         {
             List<string> dictionary = new List<string>();
             string? line = readDictionary.ReadLine();

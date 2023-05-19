@@ -42,7 +42,7 @@ namespace Wordsearch_Solver
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             PuzzleLoader loader = new PuzzleLoader(filepath);
-            WordsearchData? wordsearch = loader.GetWordsearch();
+            WordsearchData? wordsearch = loader.wordsearch;
             stopwatch.Stop();
             string loadTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
             if (wordsearch != null)
