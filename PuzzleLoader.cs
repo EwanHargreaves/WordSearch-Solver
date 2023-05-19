@@ -92,7 +92,7 @@ namespace Wordsearch_Solver
             string? line = readDictionary.ReadLine();
             while (line != null)
             {
-                dictionary.Add(line);
+                dictionary.Add(line.ToUpper());
                 line = readDictionary.ReadLine();
             }
             return dictionary;

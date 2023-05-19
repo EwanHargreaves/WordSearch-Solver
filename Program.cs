@@ -27,14 +27,14 @@ namespace Wordsearch_Solver
         }
 
         static string[] puzzles = {
-            "puzzle 1",
-            "puzzle 2",
-            "puzzle 3",
-            "puzzle 4",
-            "puzzle 5",
+            //"puzzle 1",
+            //"puzzle 2",
+            //"puzzle 3",
+            //"puzzle 4",
+            //"puzzle 5",
             "Large dictionary",
             "Large dictionary - 3 Letter min",
-            "Small dictionary"
+            //"Small dictionary"
         };
 
         static WordsearchData? LoadPuzzle(string filepath)
