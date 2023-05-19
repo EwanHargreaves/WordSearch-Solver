@@ -8,8 +8,8 @@ namespace Wordsearch_Solver
 {
     interface ISolver
     {
-        abstract void solve();
+        abstract void Solve();
 
-        abstract void writeResults(string loadTime, string solveTime, string filepath);
+        abstract void WriteResults(string loadTime, string solveTime, string filepath);
     }
 }

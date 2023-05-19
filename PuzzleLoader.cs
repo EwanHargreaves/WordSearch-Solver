@@ -8,23 +8,23 @@ namespace Wordsearch_Solver
         int length = 0;
         public PuzzleLoader(string path)
         {
-            StreamReader[] readers = getReaders(path);
+            StreamReader[] readers = GetReaders(path);
 
-            if (checkReaders(readers))
+            if (CheckReaders(readers))
             {
-                char[] grid = readGrid(readers[0]);
-                List<string> dictionary = readDictionary(readers[1]);
+                char[] grid = ReadGrid(readers[0]);
+                List<string> dictionary = ReadDictionary(readers[1]);
 
                 wordsearch = new WordsearchData(grid, dictionary, length);
             }
         }
 
-        public WordsearchData? getWordsearch()
+        public WordsearchData? GetWordsearch()
         {
             return wordsearch;
         }
 
-        StreamReader[] getReaders(string path)
+        StreamReader[] GetReaders(string path)
         {
             const string GRID_PATH = "wordsearch_grid.txt";
             const string DICTIONARY_PATH = "dictionary.txt";
@@ -44,14 +44,14 @@ namespace Wordsearch_Solver
             return readers;
         }
 
-        bool checkReaders(StreamReader[] readers)
+        bool CheckReaders(StreamReader[] readers)
         {
             if (readers[0] == null || readers[1] == null)
                 return false;
             return true;
         }
 
-        char[] readGrid(StreamReader gridReader)
+        char[] ReadGrid(StreamReader gridReader)
         {
             char[] grid = new char[0];
             try
@@ -91,7 +91,7 @@ namespace Wordsearch_Solver
             return grid;
         }
 
-        List<string> readDictionary(StreamReader readDictionary)
+        List<string> ReadDictionary(StreamReader readDictionary)
         {
             List<string> dictionary = new List<string>();
             string? line = readDictionary.ReadLine();

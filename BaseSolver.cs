@@ -17,9 +17,9 @@ namespace Wordsearch_Solver
 
         protected string method = "";
 
-        abstract public void solve();
+        abstract public void Solve();
 
-        public void writeResults(string loadTime, string solveTime, string filepath)
+        public void WriteResults(string loadTime, string solveTime, string filepath)
         {
             filepath = $"{filepath}{method}_Results.txt";
             Console.WriteLine("Outputing: " + filepath);
@@ -49,7 +49,7 @@ namespace Wordsearch_Solver
             }
         }
 
-        protected char? nextLetterInDirection(int[] direction, int x, int y, int depth)
+        protected char? NextLetterInDirection(int[] direction, int x, int y, int depth)
         {
             int newX = x + (direction[0] * depth);
             int newY = y + (direction[1] * depth);

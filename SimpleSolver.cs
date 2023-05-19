@@ -12,14 +12,14 @@ namespace Wordsearch_Solver
 
         public SimpleSolver(WordsearchData _wordsearch)
         {
-            grid = _wordsearch.getGrid();
-            length = _wordsearch.getLength();
-            dictionary = _wordsearch.getSimpleDictionary();
+            grid = _wordsearch.GetGrid();
+            length = _wordsearch.GetLength();
+            dictionary = _wordsearch.GetSimpleDictionary();
             method = "Simple";
             notFound = new List<string>(dictionary);
         }
 
-        override public void solve()
+        override public void Solve()
         {
             for (int y = 0; y < length; y++)
             {
@@ -40,20 +40,20 @@ namespace Wordsearch_Solver
                 dictionaryEntriesVisited++;
                 if (letter == word[0])
                 {
-                    List<int> dirToCheck = possibleDirections(x, y, word);
+                    List<int> dirToCheck = PossibleDirections(x, y, word);
 
                     if (dirToCheck == new List<int>())
                         continue;
 
                     foreach (int direction in dirToCheck)
                     {
-                        isWord(x, y, direction, word);
+                        IsWord(x, y, direction, word);
                     }
                 }
             }
         }
 
-        void isWord(int x, int y, int direction, string word)
+        void IsWord(int x, int y, int direction, string word)
         {
             for (int depth = 1; depth < word.Length; depth++)
             {
@@ -76,14 +76,14 @@ namespace Wordsearch_Solver
             }
         }
 
-        List<int> possibleDirections(int x, int y, string word)
+        List<int> PossibleDirections(int x, int y, string word)
         {
             List<int> check = new List<int>();
 
             for (int i = 1; i <= 8; i++)
             {
                 int[] direction = GetDirection(i);
-                char? next = nextLetterInDirection(direction, x, y, 1);
+                char? next = NextLetterInDirection(direction, x, y, 1);
                 if (next == null)
                     continue;
 

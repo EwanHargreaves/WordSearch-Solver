@@ -23,47 +23,47 @@ namespace Wordsearch_Solver
             length = _length;
         }
 
-        public int getLength()
+        public int GetLength()
         {
             return length;
         }
 
-        public char[] getGrid()
+        public char[] GetGrid()
         {
             return grid;
         }
 
-        public List<string> getSimpleDictionary()
+        public List<string> GetSimpleDictionary()
         {
             return simpleDictionary;
         }
 
-        public void setLoadTime(string _loadTime)
+        public void SetLoadTime(string _loadTime)
         {
             loadTime = _loadTime;
         }
 
-        public string getLoadTime()
+        public string GetLoadTime()
         {
             return loadTime;
         }
 
-        public List<Cell> getAdvancedDictionary()
+        public List<Cell> GetAdvancedDictionary()
         {
             return advancedDictionary;
         }
 
-        public void loadAdvancedDictionary()
+        public void LoadAdvancedDictionary()
         {
             int dictionarySize = simpleDictionary.Count;
 
             for (int i =0; i< dictionarySize; i++)
             {
-                addWord(i);
+                AddWord(i);
             }
         }
 
-        private void addWord(int i)
+        private void AddWord(int i)
         {
             string word = simpleDictionary[i];
 
@@ -73,14 +73,14 @@ namespace Wordsearch_Solver
             {
                 if(root.letter == word[0])
                 {
-                    addToRoot(ref match, root, word);
+                    AddToRoot(ref match, root, word);
                 }
             }
             if (match == false)
-                addNewRoot(word);
+                AddNewRoot(word);
         }
 
-        private void addNewRoot(string word)
+        private void AddNewRoot(string word)
         {
             int wordSize = word.Length;
             Cell root = new Cell(word[0]);
@@ -88,14 +88,14 @@ namespace Wordsearch_Solver
 
             for (int j = 1; j < wordSize - 1; j++)
             {
-                current = addNextCell(word, current, j);
+                current = AddNextCell(word, current, j);
             }
-            addLastCell(word, current);
+            AddLastCell(word, current);
             advancedDictionary.Add(root);
             
         }
 
-        private void addToRoot(ref bool match, Cell root, string word)
+        private void AddToRoot(ref bool match, Cell root, string word)
         {
             int wordSize = word.Length;
             match = true;
@@ -128,21 +128,21 @@ namespace Wordsearch_Solver
             }
             for(int j= depth + 1; j < wordSize - 1; j++)
             {
-                current = addNextCell(word, current, j);
+                current = AddNextCell(word, current, j);
             }
-            addLastCell(word, current);
+            AddLastCell(word, current);
             match = true;
 
         }
 
-        private void addLastCell(string word, Cell current)
+        private void AddLastCell(string word, Cell current)
         {
             int wordSize = word.Length;
             Cell lastcell = new Cell(word[wordSize - 1], word);
             current.AddCell(lastcell);
         }
 
-        private Cell addNextCell(string word, Cell current, int depth)
+        private Cell AddNextCell(string word, Cell current, int depth)
         {
             Cell newCell = new Cell(word[depth]);
             current.AddCell(newCell);

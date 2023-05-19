@@ -25,56 +25,56 @@ namespace Wordsearch
 
         public AdvancedSolver(WordsearchData _wordsearch)
         {
-            _wordsearch.loadAdvancedDictionary();
-            dictionary = _wordsearch.getAdvancedDictionary();
-            length = _wordsearch.getLength();
-            grid = _wordsearch.getGrid();
+            _wordsearch.LoadAdvancedDictionary();
+            dictionary = _wordsearch.GetAdvancedDictionary();
+            length = _wordsearch.GetLength();
+            grid = _wordsearch.GetGrid();
             method = "Advanced";
-            notFound = _wordsearch.getSimpleDictionary();
+            notFound = _wordsearch.GetSimpleDictionary();
         }
 
-        override public void solve()
+        override public void Solve()
         {
             for (int y = 0; y < length; y++)
             {
                 for (int x = 0; x < length; x++)
                 {
-                    checkCell(x, y);
+                    CheckCell(x, y);
                 }
             }
         }
 
-        private void checkCell(int x, int y)
+        private void CheckCell(int x, int y)
         {
             foreach (Cell root in dictionary)
             {
                 dictionaryEntriesVisited++;
-                matchingRoot(x, y, root);
+                MatchingRoot(x, y, root);
             }
         }
 
-        private void matchingRoot(int x, int y, Cell root)
+        private void MatchingRoot(int x, int y, Cell root)
         {
             if (grid[x + (y * length)] != root.letter)
                 return;
 
-            List<Searching> possibleDirections = validDirections(x, y, root);
+            List<Searching> possibleDirections = ValidDirections(x, y, root);
 
             int depth = 2;
             foreach (Searching search in possibleDirections)
             {
-                recursiveSearch(search, x, y, depth);
+                RecursiveSearch(search, x, y, depth);
             }
          }
 
         //returns all directions in which the next letter matches a possible next letter 
-        public List<Searching> validDirections(int x, int y, Cell root)
+        public List<Searching> ValidDirections(int x, int y, Cell root)
         {
             List<Searching> possibleDirections = new List<Searching>();
             for (int i = 1; i <= 8; i++)
             {
                 int[] direction = GetDirection(i);
-                char? letterInDirection = nextLetterInDirection(direction, x, y, 1);
+                char? letterInDirection = NextLetterInDirection(direction, x, y, 1);
                 if (letterInDirection == null)
                     continue;
 
@@ -91,7 +91,7 @@ namespace Wordsearch
             return possibleDirections;
         }
 
-        private void recursiveSearch(Searching search, int x, int y, int depth)
+        private void RecursiveSearch(Searching search, int x, int y, int depth)
         {
             string word = search.cell.word;
             if (word != "")
@@ -102,7 +102,7 @@ namespace Wordsearch
                 return;
             }
 
-            char? letterInDirection = nextLetterInDirection(search.direction, x, y, depth);
+            char? letterInDirection = NextLetterInDirection(search.direction, x, y, depth);
             if (letterInDirection == null)
                 return;
 
@@ -111,7 +111,7 @@ namespace Wordsearch
                 if (letterInDirection == nextCell.letter)
                 {
                     Searching s = new Searching(search.direction, nextCell);
-                    recursiveSearch(s, x, y, ++depth);
+                    RecursiveSearch(s, x, y, ++depth);
                 }
             }
         }

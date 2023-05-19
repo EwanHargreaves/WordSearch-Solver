@@ -12,16 +12,16 @@ namespace Wordsearch_Solver
             {
                 string filepath = "Puzzles/" + path + "/";
 
-                WordsearchData? wordsearch = loadPuzzle(filepath);
+                WordsearchData? wordsearch = LoadPuzzle(filepath);
 
                 if (wordsearch == null)
                     break;
 
                 ISolver sSolver = new SimpleSolver(wordsearch);
-                solveWith(sSolver, wordsearch.getLoadTime(), filepath);
+                SolveWith(sSolver, wordsearch.GetLoadTime(), filepath);
 
                 ISolver aSolver = new AdvancedSolver(wordsearch);
-                solveWith(aSolver, wordsearch.getLoadTime(), filepath);
+                SolveWith(aSolver, wordsearch.GetLoadTime(), filepath);
                 
             }
         }
@@ -37,28 +37,28 @@ namespace Wordsearch_Solver
             "Small dictionary"
         };
 
-        static WordsearchData? loadPuzzle(string filepath)
+        static WordsearchData? LoadPuzzle(string filepath)
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             PuzzleLoader loader = new PuzzleLoader(filepath);
-            WordsearchData? wordsearch = loader.getWordsearch();
+            WordsearchData? wordsearch = loader.GetWordsearch();
             stopwatch.Stop();
             string loadTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
             if (wordsearch != null)
-                wordsearch.setLoadTime(loadTime);
+                wordsearch.SetLoadTime(loadTime);
             return wordsearch;
         }
 
-        static void solveWith(ISolver solver, string loadTime, string filepath)
+        static void SolveWith(ISolver solver, string loadTime, string filepath)
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            solver.solve();
+            solver.Solve();
             stopwatch.Stop();
 
             string solveTime = stopwatch.Elapsed.TotalMilliseconds.ToString();
-            solver.writeResults(loadTime, solveTime, filepath);
+            solver.WriteResults(loadTime, solveTime, filepath);
         }
     }
    
