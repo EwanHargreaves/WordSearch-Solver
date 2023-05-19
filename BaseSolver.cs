@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Wordsearch_Solver
 {
     public abstract class BaseSolver : ISolver
     {
         protected int length;
-        protected char[] grid = new char[0];
+        protected char[] grid;
 
         protected int gridCellsVisited;
         protected int dictionaryEntriesVisited;
@@ -23,7 +21,7 @@ namespace Wordsearch_Solver
 
         public void writeResults(string loadTime, string solveTime, string filepath)
         {
-            filepath = filepath + method + "_Results.txt";
+            filepath = $"{filepath}{method}_Results.txt";
             Console.WriteLine("Outputing: " + filepath);
             StreamWriter writer = new StreamWriter(filepath);
 
@@ -74,40 +72,18 @@ namespace Wordsearch_Solver
 
         protected int[] GetDirection(int direction)
         {
-            int[] dir = new int[2] { 1, 1 };
-            switch (direction)
+            return direction switch
             {
-                case 1:
-                    dir[0] = 0;
-                    break;
-                case 2:
-                    dir[0] = 0;
-                    dir[1] = -1;
-                    break;
-                case 3:
-                    dir[0] = -1;
-                    dir[1] = 0;
-                    break;
-                case 4:
-                    dir[1] = 0;
-                    break;
-                case 5:
-                    dir[0] = -1;
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    dir[0] = -1;
-                    dir[1] = -1;
-                    break;
-                case 8:
-                    dir[1] = -1;
-                    break;
-
-            }
-            return dir;
+                1 => new int[] { -1, -1 }, // Diagonal up-left
+                2 => new int[] { -1, 0 },  // Up
+                3 => new int[] { -1, 1 },  // Diagonal up-right
+                4 => new int[] { 0, -1 },  // Left
+                5 => new int[] { 0, 1 },   // Right
+                6 => new int[] { 1, -1 },  // Diagonal down-left
+                7 => new int[] { 1, 0 },   // Down
+                8 => new int[] { 1, 1 },   // Diagonal down-right
+                _ => new int[] { 0, 0 },   // Default case for unknown direction
+            };
         }
-
-       
     }
 }
