@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wordsearch_Solver;
 
 namespace Wordsearch
 {
     internal class AdvancedSolver : BaseSolver
     {
-        List<Cell> dictionary = new List<Cell>();
+        private List<Cell> dictionary;
 
         public struct Searching
         {
-            public Searching(int[] pDirection, Cell currentCell)
+            public Searching(int[] _direction, Cell _currentCell)
             {
-                direction = pDirection;
-                cell = currentCell;
+                direction = _direction;
+                cell = _currentCell;
             }
 
             public int[] direction { get; }
@@ -49,15 +46,15 @@ namespace Wordsearch
             foreach (Cell root in dictionary)
             {
                 dictionaryEntriesVisited++;
-                MatchingRoot(x, y, root);
+                if (grid[x + (y * length)] == root.letter)
+                {
+                    MatchingRoot(x, y, root);
+                }
             }
         }
 
         private void MatchingRoot(int x, int y, Cell root)
         {
-            if (grid[x + (y * length)] != root.letter)
-                return;
-
             List<Searching> possibleDirections = ValidDirections(x, y, root);
 
             int depth = 2;
@@ -94,10 +91,10 @@ namespace Wordsearch
         private void RecursiveSearch(Searching search, int x, int y, int depth)
         {
             string word = search.cell.word;
-            if (word != "")
+            if (!string.IsNullOrEmpty(word))
             {
                 notFound.Remove(word);
-                string location = x + " " + y + " ";
+                string location = $"{x} {y} ";
                 found.Add(location + word);
                 return;
             }
